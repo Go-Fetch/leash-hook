@@ -50,16 +50,16 @@ echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
 ZoneIP=`zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1`
 
-cat <<EOL
-Zone prep complete!
-***************************************************
-* To begin install:                               *
-*   zlogin $VMUUID   *
-*   cd /opt/local/leash                           *
-*   python main.py                                *
-*                                                 *
-* Then in your browser navigate to:               *
-*   http://$InstallerZoneIP:5000                        *
-*                                                 *
-***************************************************
-EOL
+
+echo "Zone prep complete!"
+echo "***************************************************"
+echo "* To begin install:                               *"
+echo "*   zlogin $VMUUID   *"
+echo "*   cd /opt/local/leash                           *"
+echo "*   python main.py                                *"
+echo "*                                                 *"
+echo "* Then in your browser navigate to:               *"
+echo "*   http://$InstallerZoneIP:5000                        *"
+echo "*                                                 *"
+echo "***************************************************"
+echo "EOL"
