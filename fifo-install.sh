@@ -12,10 +12,10 @@ InstallerZoneMASK=$3
 
 mkdir /opt/images
 mkdir /opt/zone_definitions
-wget -O /opt/images/fifo-installer-0.6.1-1.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.dsmanifest
-wget -O /opt/images/fifo-installer-0.6.1-1.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.zfs.bz2
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-1.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.dsmanifest
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-1.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.zfs.bz2
 imgadm install -m /opt/images/fifo-installer-0.6.1-1.dsmanifest -f /opt/images/fifo-installer-0.6.1-1.zfs.bz2
-wget -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template
+wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template
 
 if [ "$InstallerZoneIP" = "DHCP" ]
 then
