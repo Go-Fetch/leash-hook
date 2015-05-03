@@ -48,7 +48,7 @@ echo $HyperGW > /zones/$VMUUID/root/opt/local/leash/config/host.gateway
 echo $HyperIP > /zones/$VMUUID/root/opt/local/leash/config/host.ip
 echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
-ZoneIP=$(zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1)
+ZoneIP="$(zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1)"
 
 
 echo "Zone prep complete!"
