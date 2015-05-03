@@ -9,13 +9,14 @@ InstallerZoneIP=$(echo $1 | tr '[:lower:]' '[:upper:]')
 InstallerZoneGW=$2
 InstallerZoneMASK=$3
 
+RANDOM=`awk 'BEGIN{srand();print int(rand()*(63000-2000))+2000 }'` #Used to break cache
 
 mkdir /opt/images
 mkdir /opt/zone_definitions
 wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-1.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.dsmanifest
 wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-1.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-1.zfs.bz2
 imgadm install -m /opt/images/fifo-installer-0.6.1-1.dsmanifest -f /opt/images/fifo-installer-0.6.1-1.zfs.bz2
-wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template
+wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template?$RANDOM
 
 if [ "$InstallerZoneIP" = "DHCP" ]
 then
@@ -47,6 +48,8 @@ echo $HyperGW > /zones/$VMUUID/root/opt/local/leash/config/host.gateway
 echo $HyperIP > /zones/$VMUUID/root/opt/local/leash/config/host.ip
 echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
+ZoneIP=`zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1`
+
 cat <<EOL
 Zone prep complete!
 ***************************************************
@@ -60,6 +63,3 @@ Zone prep complete!
 *                                                 *
 ***************************************************
 EOL
-
-
-python main.py
