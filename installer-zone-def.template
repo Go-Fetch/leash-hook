@@ -5,7 +5,7 @@
 	"max_physical_memory": 512,
 	"quota": "10",
 	"cpu_cap": 100,
-	"alias": "fifo_installer_tmp",
+	"alias": "fifo_installer",
 	"resolvers": ["8.8.8.8", "8.8.4.4"],
 	"nics": [
 		{
