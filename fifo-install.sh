@@ -3,7 +3,7 @@
 # or
 # curl -k https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/fifo-install.sh | bash -s "dhcp"
 #
-
+set -x
 
 InstallerZoneIP=$(echo $1 | tr '[:lower:]' '[:upper:]')
 InstallerZoneGW=$2
@@ -38,9 +38,9 @@ echo "Successfully created installation VM: $VMUUID"
 echo "Prepping zone to run installer."
 
 
-HyperIP=`ifconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1`
-HyperGW=`netstat -rn | grep default | awk '{print $2}'`
-HyperMASK=`ifconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $4}' | head -n 1 | sed -r 's/(..)/0x\1 /g' | xargs printf '%d.%d.%d.%d\n'`
+HyperIP=$(ifconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1)
+HyperGW=$(netstat -rn | grep default | awk '{print $2}')
+HyperMASK=$(ifconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $4}' | head -n 1 | sed -r 's/(..)/0x\1 /g' | xargs printf '%d.%d.%d.%d\n')
 
 
 mkdir /zones/$VMUUID/root/opt/local/leash/config
@@ -48,7 +48,7 @@ echo $HyperGW > /zones/$VMUUID/root/opt/local/leash/config/host.gateway
 echo $HyperIP > /zones/$VMUUID/root/opt/local/leash/config/host.ip
 echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
-ZoneIP=`zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1`
+ZoneIP=$(zlogin -iQ $VMUUID "ifconfig" | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1)
 
 
 echo "Zone prep complete!"
