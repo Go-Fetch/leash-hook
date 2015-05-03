@@ -1,0 +1,19 @@
+{
+	"autoboot": true,
+	"brand": "joyent",
+	"image_uuid": "5a4ba06a-c1bb-11e4-af0b-4be0ce4ce04c",
+	"max_physical_memory": 512,
+	"quota": "10",
+	"cpu_cap": 100,
+	"alias": "fifo_installer_tmp",
+	"resolvers": ["8.8.8.8", "8.8.4.4"],
+	"nics": [
+		{
+			"ip": "{{IP}}",
+			"gateway": "{{GW}}",
+			"netmask": "{{MASK}}",
+			"interface": "net0",
+			"nic_tag": "admin"
+		}
+	]
+}
