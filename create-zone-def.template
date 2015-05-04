@@ -2,7 +2,7 @@
 	"autoboot": true,
 	"brand": "joyent",
 	"image_uuid": "5a4ba06a-c1bb-11e4-af0b-4be0ce4ce04c",
-	"max_physical_memory": 512,
+	"max_physical_memory": 2048,
 	"quota": "10",
 	"cpu_cap": 100,
 	"alias": "fifo_installer_tmp",
