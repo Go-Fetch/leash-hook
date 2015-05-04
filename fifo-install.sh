@@ -3,8 +3,6 @@
 # or
 # curl -k https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/fifo-install.sh | bash -s "dhcp"
 #
-set -x
-
 InstallerZoneIP=$(echo $1 | tr '[:lower:]' '[:upper:]')
 InstallerZoneGW=$2
 InstallerZoneMASK=$3
