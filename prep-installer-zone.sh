@@ -90,6 +90,10 @@ mkdir /var/leash
 groupadd leash
 useradd -g leash -d /opt/local/leash -s /bin/false leash
 
+svccfg import /opt/local/leash/leash.xml
+
+svcadm enable leash
+
 pkgin -y remove build-essential-1.1 gmake-4.1nb1 automake-1.14.1nb1 bison-3.0.2nb1 git-docs-2.2.1 patch-2.7.4 git-base-2.2.1 gcc47-4.7.3nb6 libtool-2.4.2nb2 libtool-fortran-2.4.2nb5 binutils-2.24nb3 m4-1.4.17 libtool-info-2.4.2 p5-Authen-SASL-2.16nb2 autoconf-2.69nb5 curl-7.42.0 libtool-base-2.4.2nb9 p5-Net-SMTP-SSL-1.01nb5 p5-Error-0.17022 p5-Email-Valid-1.195 p5-MailTools-2.14 p5-TimeDate-2.30nb1 p5-IO-Socket-SSL-2.007 p5-Net-DNS-0.81 p5-Digest-HMAC-1.03nb4 p5-Net-Domain-TLD-1.72 p5-IO-CaptureOutput-1.11.03 p5-GSSAPI-0.28nb5 libssh2-1.4.3 openldap-client-2.4.40 libidn-1.29 p5-Net-LibIDN-0.12nb6 cyrus-sasl-2.1.26nb4 p5-Net-SSLeay-1.66 mit-krb5-1.10.7nb4 p5-IO-Socket-INET6-2.72 p5-Socket6-0.25 p5-Net-IP-1.26nb2 tcp_wrappers-7.6.4
 pkgin -y clean
 pkgin -y in openssh-6.6.1nb3
