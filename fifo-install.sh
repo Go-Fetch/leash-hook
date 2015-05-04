@@ -49,7 +49,7 @@ echo $HyperIP > /zones/$VMUUID/root/opt/local/leash/config/host.ip
 echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
 ZoneIfconfig=$(zlogin -i $VMUUID ifconfig)
-ZoneIP=$(echo $ZoneIfconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1)
+InstallerIP=`echo -n $ZoneIfconfig | grep inet | grep -v '127.0.0.1' | grep -v '\:\:1/128' | awk '{print $2}' | head -n 1`
 
 
 echo http://$ZoneIP:5000
