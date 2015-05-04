@@ -48,13 +48,16 @@ echo $HyperGW > /zones/$VMUUID/root/opt/local/leash/config/host.gateway
 echo $HyperIP > /zones/$VMUUID/root/opt/local/leash/config/host.ip
 echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 
-ZoneIfconfig=$(zlogin -i $VMUUID ifconfig)
-echo -n $ZoneIfconfig 
-Installer1=`echo -n $ZoneIfconfig | grep inet`
-Installer2=`echo -n $Installer1 | grep -v '127.0.0.1'`
-Installer3=`echo -n $Installer2 | grep -v '\:\:1/128'`
-Installer4=`echo -n $Installer3 | awk '{print $2}' | head -n 1`
-Installer5=`echo -n $Installer4 | head -n 1`
-
-echo $Installer5
-echo http://$ZoneIP:5000
+cat <<EOL
+Zone prep complete!
+***************************************************
+* To begin install:                               *
+*   zlogin $VMUUID   *
+*   cd /opt/local/leash                           *
+*   python main.py                                *
+*                                                 *
+* Then in your browser navigate to:               *
+*   http://$InstallerZoneIP:5000                        *
+*                                                 *
+***************************************************
+EOL
