@@ -35,4 +35,4 @@ echo "Prepping zone to run installer."
 
 zlogin -i $VMUUID "curl -k https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/prep-installer-zone.sh?$RANDOM | /bin/bash"
 
-imgadm create -c bzip2 $VMUUID name=fifo-installer version=0.6.1-2 -o /var/tmp
+#imgadm create -c bzip2 $VMUUID name=fifo-installer version=0.6.1-3 -o /var/tmp

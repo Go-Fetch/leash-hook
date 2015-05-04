@@ -11,9 +11,9 @@ RANDOM=`awk 'BEGIN{srand();print int(rand()*(63000-2000))+2000 }'` #Used to brea
 
 mkdir /opt/images
 mkdir /opt/zone_definitions
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-2.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-2.dsmanifest
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-2.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-2.zfs.bz2
-imgadm install -m /opt/images/fifo-installer-0.6.1-2.dsmanifest -f /opt/images/fifo-installer-0.6.1-2.zfs.bz2
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-3.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-3.dsmanifest
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-3.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-3.zfs.bz2
+imgadm install -m /opt/images/fifo-installer-0.6.1-3.dsmanifest -f /opt/images/fifo-installer-0.6.1-3.zfs.bz2
 wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template?$RANDOM
 
 if [ "$InstallerZoneIP" = "DHCP" ]
@@ -49,10 +49,7 @@ echo $HyperMASK > /zones/$VMUUID/root/opt/local/leash/config/host.netmask
 cat <<EOL
 Zone prep complete!
 ***************************************************
-* To begin install:                               *
-*   zlogin $VMUUID   *
-*   cd /opt/local/leash                           *
-*   python main.py                                *
+* To begin install navigate to:                   *
 *                                                 *
 * Then in your browser navigate to:               *
 *   http://$InstallerZoneIP:5000                        *
