@@ -90,6 +90,8 @@ mkdir /var/leash
 groupadd leash
 useradd -g leash -d /opt/local/leash -s /bin/false leash
 
+chown -R leash:leash /opt/local/leash
+
 svccfg import /opt/local/leash/leash.xml
 
 svcadm enable leash
