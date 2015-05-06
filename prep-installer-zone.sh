@@ -90,7 +90,11 @@ git clone https://github.com/Go-Fetch/leash.git leash
 groupadd leash
 useradd -g leash -d /opt/local/leash -s /bin/false leash
 
+mkdir /var/log/leash
+chown -R leash:leash /var/log/leash
+
 chown -R leash:leash /opt/local/leash
+chmod +x /opt/local/leash/leash
 chmod +x /opt/local/leash/log-socket
 chmod +x /opt/local/leash/info.sh
 
