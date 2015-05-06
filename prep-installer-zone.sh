@@ -4,6 +4,8 @@ pkgin -y in python27-2.7.9 py27-pip-1.5.6 sshpass-1.05 build-essential-1.1
 pip install fabric==1.10.1
 pip install ansible==1.9.1
 pip install flask==0.10.1
+pip install twisted==15.1.0
+pip install autobahn==0.10.3
 
 cd /opt/local
 git clone https://github.com/project-fifo/pyfi.git pyfi
@@ -92,6 +94,7 @@ useradd -g leash -d /opt/local/leash -s /bin/false leash
 
 chown -R leash:leash /opt/local/leash
 chmod +x /opt/local/leash/log-socket
+chmod +x /opt/local/leash/info.sh
 
 svccfg import /opt/local/leash/leash.xml
 svccfg import /opt/local/leash/log-socket.xml
