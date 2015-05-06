@@ -1,7 +1,7 @@
 {
 	"autoboot": true,
 	"brand": "joyent",
-	"image_uuid": "db4199fc-0ad7-4a34-a8d2-de1633900414",
+	"image_uuid": "e1ac7e75-e15c-4097-a26e-5eb04cd19eb3",
 	"max_physical_memory": 512,
 	"quota": "10",
 	"cpu_cap": 100,

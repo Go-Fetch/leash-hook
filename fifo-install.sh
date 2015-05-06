@@ -11,9 +11,9 @@ RANDOM=`awk 'BEGIN{srand();print int(rand()*(63000-2000))+2000 }'` #Used to brea
 
 mkdir /opt/images
 mkdir /opt/zone_definitions
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-4.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-4.dsmanifest
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-4.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-4.zfs.bz2
-imgadm install -m /opt/images/fifo-installer-0.6.1-4.dsmanifest -f /opt/images/fifo-installer-0.6.1-4.zfs.bz2
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-5.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-5.dsmanifest
+wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-5.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-5.zfs.bz2
+imgadm install -m /opt/images/fifo-installer-0.6.1-5.dsmanifest -f /opt/images/fifo-installer-0.6.1-5.zfs.bz2
 wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template?$RANDOM
 
 if [ "$InstallerZoneIP" = "DHCP" ]
