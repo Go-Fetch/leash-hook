@@ -87,8 +87,6 @@ EOL
 cd /opt/local
 git clone https://github.com/Go-Fetch/leash.git leash
 
-mkdir /var/leash
-
 groupadd leash
 useradd -g leash -d /opt/local/leash -s /bin/false leash
 
