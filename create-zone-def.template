@@ -6,7 +6,7 @@
 	"quota": "10",
 	"cpu_cap": 100,
 	"alias": "fifo_installer_tmp",
-	"resolvers": ["8.8.8.8", "8.8.4.4"],
+	"resolvers": ["10.1.1.1", "8.8.4.4"],
 	"nics": [
 		{
 			"ip": "{{IP}}",
