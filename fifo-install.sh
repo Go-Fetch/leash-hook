@@ -9,18 +9,23 @@ InstallerZoneMASK=$3
 
 RANDOM=`awk 'BEGIN{srand();print int(rand()*(63000-2000))+2000 }'` #Used to break cache
 
+BASE="https://us-east.manta.joyent.com/kevinmeziere/public/fifo-install/"
+REV="0.6.1-6"
+IMAGE="c8bbc300-7534-499b-b49b-33f0efa1b2a3"
+
+
 mkdir /opt/images
 mkdir /opt/zone_definitions
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-5.dsmanifest https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-5.dsmanifest
-wget --no-check-certificate -O /opt/images/fifo-installer-0.6.1-5.zfs.bz2 https://s3.amazonaws.com/tmp.jpcu/fi/fifo-installer-0.6.1-5.zfs.bz2
-imgadm install -m /opt/images/fifo-installer-0.6.1-5.dsmanifest -f /opt/images/fifo-installer-0.6.1-5.zfs.bz2
+wget --no-check-certificate -O /opt/images/fifo-installer-"${REV}".dsmanifest "${BASE}"fifo-installer-"${REV}".imgmanifest
+wget --no-check-certificate -O /opt/images/fifo-installer-"${REV}".zfs.bz2 "${BASE}"fifo-installer-"${REV}".zfs.bz2
+imgadm install -m /opt/images/fifo-installer-"${REV}".dsmanifest -f /opt/images/fifo-installer-"${REV}".zfs.bz2
 wget --no-check-certificate -O /opt/zone_definitions/installer-zone-def.template https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/installer-zone-def.template?$RANDOM
 
 if [ "$InstallerZoneIP" = "DHCP" ]
 then
-  sed "s/{{IP}}/dhcp/g;/{{GW}}/d;/{{MASK}}/d" /opt/zone_definitions/installer-zone-def.template > /opt/zone_definitions/installer-zone-def.json
+  sed "s/{{IMGUUID}}/$IMAGE/g;s/{{IP}}/dhcp/g;/{{GW}}/d;/{{MASK}}/d" /opt/zone_definitions/installer-zone-def.template > /opt/zone_definitions/installer-zone-def.json
 else
-  sed "s/{{IP}}/$InstallerZoneIP/g;s/{{GW}}/$InstallerZoneGW/g;s/{{MASK}}/$InstallerZoneMASK/g" /opt/zone_definitions/installer-zone-def.template > /opt/zone_definitions/installer-zone-def.json
+  sed "s/{{IMGUUID}}/$IMAGE/g;s/{{IP}}/$InstallerZoneIP/g;s/{{GW}}/$InstallerZoneGW/g;s/{{MASK}}/$InstallerZoneMASK/g" /opt/zone_definitions/installer-zone-def.template > /opt/zone_definitions/installer-zone-def.json
 fi
 
 echo "Creating temporary vm for installation..."
