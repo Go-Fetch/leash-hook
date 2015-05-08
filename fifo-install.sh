@@ -10,8 +10,8 @@ InstallerZoneMASK=$3
 RANDOM=`awk 'BEGIN{srand();print int(rand()*(63000-2000))+2000 }'` #Used to break cache
 
 BASE="https://us-east.manta.joyent.com/kevinmeziere/public/fifo-install/"
-REV="0.6.1-6"
-IMAGE="c8bbc300-7534-499b-b49b-33f0efa1b2a3"
+REV="0.6.1-7"
+IMAGE="19e2e969-7d33-4fc2-8c41-b1a34bf79212"
 
 
 mkdir /opt/images
