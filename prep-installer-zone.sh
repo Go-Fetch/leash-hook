@@ -19,7 +19,6 @@ cd /opt/local/fetch/roles
 git submodule add https://github.com/Go-Fetch/fifo-sniffle.git
 git submodule add https://github.com/Go-Fetch/fifo-snarl.git
 git submodule add https://github.com/Go-Fetch/fifo-howl.git
-git submodule add https://github.com/Go-Fetch/fifo-wiggle.git
 git submodule add https://github.com/Go-Fetch/fifo-jingles.git
 git submodule add https://github.com/Go-Fetch/fifo-chunter.git
 git submodule add https://github.com/Go-Fetch/leofs-manager.git
@@ -43,12 +42,6 @@ cat >/opt/local/fetch/fifo-howl.yml  <<EOL
 - hosts: fifo-howl-nodes
   roles:
     - fifo-howl
-EOL
-
-cat >/opt/local/fetch/fifo-wiggle.yml  <<EOL
-- hosts: fifo-wiggle-nodes
-  roles:
-    - fifo-wiggle
 EOL
 
 cat >/opt/local/fetch/fifo-jingles.yml <<EOL
