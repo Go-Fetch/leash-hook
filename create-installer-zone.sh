@@ -33,6 +33,6 @@ fi
 echo "Successfully created installation VM: $VMUUID"
 echo "Prepping zone to run installer."
 
-#zlogin -i $VMUUID "curl -k https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/prep-installer-zone.sh?$RANDOM | /bin/bash"
+zlogin -i $VMUUID "curl -k https://raw.githubusercontent.com/Go-Fetch/leash-hook/master/prep-installer-zone.sh?$RANDOM | /bin/bash"
 
-#imgadm create -c bzip2 $VMUUID name=fifo-installer version=0.6.1-6 -o /var/tmp
+imgadm create -c bzip2 $VMUUID name=fifo-installer version=0.7.0p0 -o /var/tmp
