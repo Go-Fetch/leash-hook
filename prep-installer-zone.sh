@@ -15,15 +15,8 @@ python setup.py install
 cd /opt/local
 git clone https://github.com/Go-Fetch/Fetch.git fetch
 
-cd /opt/local/fetch/roles
-git submodule add https://github.com/Go-Fetch/fifo-sniffle.git
-git submodule add https://github.com/Go-Fetch/fifo-snarl.git
-git submodule add https://github.com/Go-Fetch/fifo-howl.git
-git submodule add https://github.com/Go-Fetch/fifo-jingles.git
-git submodule add https://github.com/Go-Fetch/fifo-chunter.git
-git submodule add https://github.com/Go-Fetch/leofs-manager.git
-git submodule add https://github.com/Go-Fetch/leofs-gateway.git
-git submodule add https://github.com/Go-Fetch/leofs-storage.git
+cd /opt/local/fetch
+git submodule update --init --recursive
 
 
 cat >/opt/local/fetch/fifo-sniffle.yml  <<EOL
