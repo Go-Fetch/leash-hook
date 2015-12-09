@@ -1,22 +1,18 @@
 pkgin up
-pkgin -y in python27-2.7.9 py27-pip-1.5.6 sshpass-1.05 build-essential-1.1
+pkgin -y in python27-2.7.9 py27-pip-1.5.6 sshpass-1.05 git-2.2.1
 
 pip install fabric==1.10.1
 pip install ansible==1.9.1
 pip install flask==0.10.1
 pip install twisted==15.1.0
 pip install autobahn==0.10.3
+pip install PyFi==0.2.3
 
 cd /opt/local
-git clone https://github.com/project-fifo/pyfi.git pyfi
-cd pyfi
-python setup.py install
-
-cd /opt/local
-git clone https://github.com/Go-Fetch/Fetch.git fetch
-
+git clone --depth 1 https://github.com/Go-Fetch/Fetch.git fetch
+ 
 cd /opt/local/fetch
-git submodule update --init --recursive
+git submodule update --depth 1 --init --recursive
 
 
 cat >/opt/local/fetch/fifo-sniffle.yml  <<EOL
